@@ -6,74 +6,70 @@
 <title>CLIPSHORT AI</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-html,body{height:100%;overscroll-behavior-y:contain}
 body{background:#000;color:#fff;overflow:hidden}
-/* HEADER - NO ANIMATION - NO GLITCH */
-header{height:64px;display:flex;justify-content:center;align-items:center;background:#000;border-bottom:1px solid #222;position:relative;z-index:100}
-.logo-img{height:42px;width:auto;display:block}
-/* SWIPE REFRESH INDICATOR */
-#pull{position:absolute;top:64px;left:0;right:0;height:0;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;gap:8px;z-index:90;transition:height 0.2s}
+/* FONT LOGO - NO PNG - NO ANIMATION - NO GLITCH */
+header{height:60px;display:flex;justify-content:center;align-items:center;gap:8px;background:#000;border-bottom:1px solid #222;position:relative;z-index:100}
+.logo-icon{font-size:24px}
+.logo-text{font-size:22px;font-weight:900;letter-spacing:0.5px;color:#fff}
+.logo-text span{background:linear-gradient(90deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+/* PULL REFRESH - HEADER MEEDHA MATREME */
+#pull{height:0;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;gap:8px;transition:height 0.2s}
 #pull span{font-size:13px;color:#a855f7;font-weight:700}
-.pull-spinner{width:20px;height:20px;border:3px solid #222;border-top:3px solid #a855f7;border-radius:50%;animation:spin 0.7s linear infinite}
+.pull-spinner{width:18px;height:18px;border:3px solid #222;border-top:3px solid #a855f7;border-radius:50%;animation:spin 0.7s linear infinite;display:none}
 @keyframes spin{to{transform:rotate(360deg)}}
-.wrap{position:relative;width:100%;height:calc(100vh - 64px);overflow:hidden;background:#000;touch-action:pan-y}
-iframe{width:100%;height:calc(100% + 90px);margin-top:-45px;margin-bottom:-45px;border:0;display:block;background:#000}
+.wrap{position:relative;width:100%;height:calc(100vh - 60px);overflow:hidden;background:#000}
+iframe{width:100%;height:100%;border:0;display:block;background:#000}
 </style>
 </head>
 <body>
 
-<header>
-<img src="logo.png" class="logo-img" alt="ClipShort AI">
+<header id="header">
+<span class="logo-icon">✂️</span>
+<div class="logo-text">ClipShort <span>AI</span></div>
 </header>
 
-<div id="pull"><div class="pull-spinner"></div><span id="pullText">Pull to Refresh...</span></div>
+<div id="pull"><div class="pull-spinner" id="pullSpin"></div><span id="pullText">↓ Pull to Refresh</span></div>
 
-<div class="wrap" id="wrap">
+<div class="wrap">
 <iframe id="appFrame" src="https://clipshort-ai.streamlit.app/?embed=true"></iframe>
 </div>
 
 <script>
 let startY = 0;
-let pulling = false;
-let pullEl = document.getElementById('pull');
-let pullText = document.getElementById('pullText');
 let frame = document.getElementById('appFrame');
+let pull = document.getElementById('pull');
+let pullText = document.getElementById('pullText');
+let pullSpin = document.getElementById('pullSpin');
+let header = document.getElementById('header');
 
-document.addEventListener('touchstart', function(e){
+// Header meedha matrame swipe - Iframe scroll ki disturb avvadu - BUG FIX
+header.addEventListener('touchstart', function(e){
   startY = e.touches[0].clientY;
-  pulling = true;
 }, {passive:true});
 
-document.addEventListener('touchmove', function(e){
-  if(!pulling) return;
-  let y = e.touches[0].clientY;
-  let diff = y - startY;
-  // Top lo unnapudu matrame + Kindhaki laguthunnappudu matrame
-  if(diff > 0 && window.scrollY === 0){
-    let h = Math.min(diff, 80);
-    pullEl.style.height = h + 'px';
-    if(diff > 70){
-      pullText.textContent = 'Release to Refresh...';
-    } else {
-      pullText.textContent = 'Pull to Refresh...';
-    }
+header.addEventListener('touchmove', function(e){
+  let diff = e.touches[0].clientY - startY;
+  if(diff > 0){
+    let h = Math.min(diff, 50);
+    pull.style.height = h + 'px';
+    pullText.textContent = diff > 40 ? 'Release to Refresh...' : '↓ Pull to Refresh';
   }
 }, {passive:true});
 
-document.addEventListener('touchend', function(e){
-  if(!pulling) return;
-  pulling = false;
-  let h = parseInt(pullEl.style.height || 0);
-  if(h >= 70){
+header.addEventListener('touchend', function(){
+  let h = parseInt(pull.style.height || 0);
+  if(h >= 40){
     pullText.textContent = 'Refreshing...';
-    pullEl.style.height = '50px';
-    // Iframe Reload
+    pullSpin.style.display = 'block';
+    pull.style.height = '40px';
     frame.src = frame.src;
     setTimeout(function(){
-      pullEl.style.height = '0px';
-    }, 900);
+      pull.style.height = '0px';
+      pullSpin.style.display = 'none';
+      pullText.textContent = '↓ Pull to Refresh';
+    }, 1000);
   } else {
-    pullEl.style.height = '0px';
+    pull.style.height = '0px';
   }
 }, {passive:true});
 </script>
