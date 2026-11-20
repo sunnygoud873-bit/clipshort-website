@@ -3,157 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="Mm_Q4iA0-OjMdPX5HoTEM0W8fn2SlYWNq9ECNUJdEno" />
-<title>CLIPSHORT AI - Free AI Clipper & Video Downloader | Clip Shorts in Seconds</title>
-<meta name="description" content="CLIPSHORT AI - Free AI tool to clip YouTube videos into viral Shorts, Reels & TikToks. Also free Instagram, YouTube, TikTok Video Downloader. No watermark, Fast & Free.">
-<meta name="keywords" content="clipshort ai, clipshort, ai clipper, youtube to shorts, video downloader, instagram downloader, youtube shorts maker">
-<meta name="author" content="CLIPSHORT AI">
-<meta property="og:title" content="CLIPSHORT AI - Free AI Clipper & Downloader">
-<meta property="og:description" content="Turn long videos into viral Shorts in seconds. Free AI Clipper + Video Downloader.">
-<meta property="og:url" content="https://clipshort-website.vercel.app/">
-<meta property="og:type" content="website">
-<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+<title>CLIPSHORT AI - YouTube to Shorts in Seconds</title>
+<meta name="description" content="Turn any YouTube video into viral Shorts automatically with AI. Free AI Clipper.">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
-body{background:#0a0a0f;color:white;overflow-x:hidden}
-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 5%;position:fixed;top:0;width:100%;background:rgba(10,10,15,0.85);backdrop-filter:blur(10px);z-index:100}
-.logo{font-size:24px;font-weight:900;letter-spacing:1px}
-.logo span{color:#ff0055}
-nav a{color:#ccc;text-decoration:none;margin-left:25px;font-size:14px;font-weight:600}
-nav a:hover{color:white}
-.btn-nav{background:#ff0055;color:white!important;padding:10px 20px;border-radius:50px}
-.hero{text-align:center;padding:150px 20px 60px;background:radial-gradient(circle at 50% 0%,#2a0a1e 0%,#0a0a0f 60%)}
-.badge{background:#1f1f2e;border:1px solid #333;padding:7px 16px;border-radius:50px;font-size:13px;color:#ffcc00}
-.hero h1{font-size:52px;line-height:1.1;margin:25px 0 15px;font-weight:900}
-.hero h1 span{background:linear-gradient(90deg,#ff0055,#ffaa00);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{color:#aaa;max-width:650px;margin:0 auto 30px;font-size:18px;line-height:1.6}
-.hero-btns{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
-.btn{padding:16px 32px;border-radius:50px;font-weight:800;text-decoration:none;font-size:16px;display:inline-block}
-.btn-pink{background:#ff0055;color:white;box-shadow:0 10px 30px rgba(255,0,85,0.4)}
-.btn-white{background:white;color:black}
-.stats{display:flex;justify-content:center;gap:50px;margin-top:50px;flex-wrap:wrap}
-.stats div{text-align:center}
-.stats b{font-size:28px;display:block}
-.stats span{color:#888;font-size:13px}
-.section{padding:70px 5%;max-width:1100px;margin:auto}
-.section h2{text-align:center;font-size:36px;margin-bottom:10px}
-.section p.sub{text-align:center;color:#888;margin-bottom:40px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
-.card{background:#15151f;border:1px solid #222;border-radius:20px;padding:30px}
-.card h3{font-size:22px;margin-bottom:10px}
-.card p{color:#aaa;line-height:1.6;font-size:15px;margin-bottom:20px}
-.card a{color:#ff0055;font-weight:700;text-decoration:none}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.feat{background:#15151f;padding:25px;border-radius:18px;text-align:center}
-.feat div{font-size:35px;margin-bottom:10px}
-.feat h4{margin-bottom:8px}
-.feat p{color:#888;font-size:14px;line-height:1.5}
-.how{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}
-.how b{width:50px;height:50px;background:#ff0055;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:20px}
-.how p{color:#aaa;font-size:14px;line-height:1.6}
-.cta{background:linear-gradient(90deg,#ff0055,#ff6a00);border-radius:25px;padding:50px 20px;text-align:center;margin:20px 5%}
-.cta h2{font-size:32px;margin-bottom:15px}
-.cta p{margin-bottom:25px;opacity:0.9}
-footer{text-align:center;padding:30px;color:#666;font-size:13px;border-top:1px solid #1a1a1a}
-@media(max-width:768px){.hero h1{font-size:36px}.grid,.features,.how{grid-template-columns:1fr}.stats{gap:25px}nav a{display:none}nav a.btn-nav{display:block}}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#000;color:#fff}
+header{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#000;z-index:99;border-bottom:1px solid #222}
+.logo{font-size:22px;font-weight:900}.logo span{color:#ff0050}
+header a{color:#fff;text-decoration:none;font-weight:700;background:#ff0050;padding:10px 18px;border-radius:30px}
+.hero{text-align:center;padding:70px 20px 40px}
+.hero h1{font-size:44px;line-height:1.1}.hero h1 span{color:#ff0050}
+.hero p{color:#aaa;margin:20px 0;font-size:17px}
+.btn{display:inline-block;background:#ff0050;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:800;font-size:17px;margin:5px}
+.btn2{background:#fff;color:#000}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;padding:20px;max-width:900px;margin:auto}
+.card{background:#111;padding:20px;border-radius:16px;text-align:center}
+.card h3{margin:10px 0 5px}.card p{color:#aaa;font-size:13px}
+.app-section{padding:30px 15px;max-width:1000px;margin:auto}
+.app-section h2{text-align:center;margin-bottom:15px;font-size:26px}
+.app-box{border:2px solid #ff0050;border-radius:16px;overflow:hidden;background:#fff}
+.app-box iframe{width:100%;height:800px;border:0;display:block}
+.note{text-align:center;color:#aaa;font-size:13px;margin-top:10px}
+footer{text-align:center;padding:30px;color:#666;font-size:13px}
+@media(max-width:600px){.hero h1{font-size:32px}.app-box iframe{height:700px}}
 </style>
 </head>
 <body>
 
-<nav>
+<header>
 <div class="logo">CLIPSHORT <span>AI</span></div>
-<div>
-<a href="#clipper">Clipper</a>
-<a href="#downloader">Downloader</a>
-<a href="#features">Features</a>
-<a href="https://clipshort-ai.streamlit.app" target="_blank" class="btn-nav">Launch App →</a>
-</div>
-</nav>
+<a href="#app">LAUNCH APP 🚀</a>
+</header>
 
 <div class="hero">
-<div class="badge">✨ 100% FREE • NO WATERMARK • NO SIGNUP</div>
-<h1>Turn Long Videos Into<br><span>Viral Shorts In Seconds</span></h1>
-<p>CLIPSHORT AI finds the best moments from any YouTube video and turns them into Shorts, Reels & TikToks. Plus free Video Downloader for Instagram, YouTube & TikTok.</p>
-<div class="hero-btns">
-<a href="https://clipshort-ai.streamlit.app" target="_blank" class="btn btn-pink">🚀 Start Clipping - Free</a>
-<a href="#downloader" class="btn btn-white">⬇️ Download Video</a>
-</div>
-<div class="stats">
-<div><b>10,000+</b><span>Videos Clipped</span></div>
-<div><b>50,000+</b><span>Creators</span></div>
-<div><b>4.9 ★</b><span>Rating</span></div>
-</div>
+<h1>Turn Any YouTube Video<br><span>Into Viral Shorts</span></h1>
+<p>AI automatically finds best moments, adds captions & makes Shorts for you. Free!</p>
+<a class="btn" href="#app">START CLIPPING ✂️</a>
+<a class="btn btn2" href="#app">Try Free Now</a>
 </div>
 
-<div class="section" id="clipper">
-<h2>🎬 AI Clipper</h2>
-<p class="sub">Paste YouTube link - AI will do the rest</p>
-<div class="grid">
-<div class="card">
-<h3>✂️ YouTube to Shorts</h3>
-<p>Paste any YouTube video link. Our AI detects viral moments, funny parts, highlights and auto-creates 30-60 sec Shorts with captions.</p>
-<a href="https://clipshort-ai.streamlit.app" target="_blank">Try Clipper Now →</a>
-</div>
-<div class="card">
-<h3>🤖 Smart AI Detection</h3>
-<p>No manual editing. AI understands speech, emotion & engagement to pick clips that actually go viral on Shorts, Reels & TikTok.</p>
-<a href="https://clipshort-ai.streamlit.app" target="_blank">Start Free →</a>
-</div>
-</div>
-</div>
-
-<div class="section" id="downloader">
-<h2>⬇️ Video Downloader</h2>
-<p class="sub">Download any video in HD - Free & Fast</p>
-<div class="grid">
-<div class="card">
-<h3>📸 Instagram Downloader</h3>
-<p>Download Instagram Reels, Posts, Stories & Videos in HD without watermark. Just paste link.</p>
-<a href="https://clipshort-ai.streamlit.app" target="_blank">Download Now →</a>
-</div>
-<div class="card">
-<h3>▶️ YouTube & TikTok Downloader</h3>
-<p>Download YouTube Shorts, TikTok videos without watermark in 1080p. Works on mobile & PC.</p>
-<a href="https://clipshort-ai.streamlit.app" target="_blank">Download Now →</a>
-</div>
-</div>
-</div>
-
-<div class="section" id="features">
-<h2>Why Creators Love CLIPSHORT AI?</h2>
-<p class="sub">Everything you need to go viral</p>
 <div class="features">
-<div class="feat"><div>⚡</div><h4>Super Fast</h4><p>Clip in 30 seconds. No rendering wait.</p></div>
-<div class="feat"><div>💯</div><h4>100% Free</h4><p>No watermark, no hidden charges.</p></div>
-<div class="feat"><div>📱</div><h4>Mobile Friendly</h4><p>Works on Phone, Tablet & PC.</p></div>
-<div class="feat"><div>🎯</div><h4>Auto Captions</h4><p>AI adds stylish subtitles automatically.</p></div>
-<div class="feat"><div>🔥</div><h4>Viral Clips</h4><p>AI picks moments with high viral chance.</p></div>
-<div class="feat"><div>🔒</div><h4>Safe & Private</h4><p>No login needed. Your data stays safe.</p></div>
-</div>
+<div class="card"><div>🤖</div><h3>AI Auto Clips</h3><p>Best moments auto detected</p></div>
+<div class="card"><div>💬</div><h3>Auto Captions</h3><p>Viral style subtitles</p></div>
+<div class="card"><div>⚡</div><h3>Fast & Free</h3><p>30 sec lo Short ready</p></div>
+<div class="card"><div>📱</div><h3>9:16 Format</h3><p>Perfect for Reels & Shorts</p></div>
 </div>
 
-<div class="section">
-<h2>How It Works?</h2>
-<p class="sub">3 steps - Done in 1 minute</p>
-<div class="how">
-<div><b>1</b><h4>Paste Link</h4><p>Copy YouTube / Instagram / TikTok video link and paste in app.</p></div>
-<div><b>2</b><h4>AI Clips It</h4><p>AI finds best moments and creates Shorts automatically.</p></div>
-<div><b>3</b><h4>Download & Post</h4><p>Download clip and post on Shorts, Reels, TikTok - Go Viral!</p></div>
+<div class="app-section" id="app">
+<h2>🎬 CLIPSHORT AI APP - Start Here 👇</h2>
+<div class="app-box">
+<iframe src="https://clipshort-ai.streamlit.app/?embed=true" allow="clipboard-write" loading="lazy"></iframe>
 </div>
+<p class="note">⏳ First time 30 sec Loading avthundi - App Sleep nunchi leputhundhi - Wait cheyandi!</p>
 </div>
 
-<div class="cta">
-<h2>Ready To Go Viral? 🚀</h2>
-<p>Join 50,000+ creators using CLIPSHORT AI - Free Forever</p>
-<a href="https://clipshort-ai.streamlit.app" target="_blank" class="btn btn-white">Launch CLIPSHORT AI - FREE</a>
-</div>
-
-<footer>
-<p><b style="color:white">CLIPSHORT AI</b> - Free AI Clipper & Video Downloader</p>
-<br>
-<p>Made with ❤️ for Creators | © 2026 CLIPSHORT AI. All Rights Reserved.</p>
-<p style="margin-top:10px">Keywords: clipshort ai, ai clipper, youtube to shorts, video downloader, instagram downloader</p>
-</footer>
+<footer>© 2026 CLIPSHORT AI - Made in India 🇮🇳<br>Free AI YouTube to Shorts Clipper</footer>
 
 </body>
 </html>
