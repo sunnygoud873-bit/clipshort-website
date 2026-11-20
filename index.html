@@ -8,21 +8,25 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#000;color:#fff}
 header{height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;background:#000;border-bottom:1px solid #222;position:sticky;top:0;z-index:100}
-.logo{display:flex;align-items:center;gap:8px;font-size:21px;font-weight:900}
-.logo span{color:#ff0050}
-/* ANIMATION LOGO */
-.anim{font-size:26px;display:inline-block;animation:cut 1.2s ease-in-out infinite}
-@keyframes cut{
-0%,100%{transform:rotate(0deg) scale(1)}
-25%{transform:rotate(-15deg) scale(1.15)}
-50%{transform:rotate(10deg) scale(1.1)}
-75%{transform:rotate(-10deg) scale(1.15)}
+.logo{font-size:22px;font-weight:900;letter-spacing:1px;display:flex;gap:1px}
+/* FONT ANIMATION - Letters Eguruthayi */
+.logo b{display:inline-block;animation:wave 1.6s ease-in-out infinite;color:#fff}
+.logo b:nth-child(1){animation-delay:0s}
+.logo b:nth-child(2){animation-delay:0.1s}
+.logo b:nth-child(3){animation-delay:0.2s}
+.logo b:nth-child(4){animation-delay:0.3s}
+.logo b:nth-child(5){animation-delay:0.4s}
+.logo b:nth-child(6){animation-delay:0.5s}
+.logo b:nth-child(7){animation-delay:0.6s}
+.logo b:nth-child(8){animation-delay:0.7s}
+.logo b:nth-child(9){animation-delay:0.8s}
+@keyframes wave{
+0%,100%{transform:translateY(0);color:#fff}
+50%{transform:translateY(-6px);color:#ff0050}
 }
-.glow{animation:glow 2s ease-in-out infinite}
-@keyframes glow{
-0%,100%{text-shadow:0 0 0px #ff0050}
-50%{text-shadow:0 0 18px #ff0050,0 0 30px #ff0050}
-}
+/* AI - Colour Changing Font */
+.ai{margin-left:6px;font-weight:900;background:linear-gradient(90deg,#ff0050,#ffaa00,#00e5ff,#ff0050);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:colorflow 2s linear infinite}
+@keyframes colorflow{0%{background-position:0% 50%}100%{background-position:300% 50%}}
 .btn{background:#ff0050;color:#fff;text-decoration:none;padding:9px 15px;border-radius:20px;font-weight:800;font-size:13px}
 .wrap{position:relative;width:100%;height:calc(100vh - 60px);background:#fff}
 #loader{position:absolute;top:0;left:0;right:0;bottom:0;background:#fff;color:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;text-align:center;padding:20px}
@@ -37,7 +41,7 @@ iframe{width:100%;height:100%;border:0;display:block;background:#fff}
 <body>
 
 <header>
-<div class="logo"><span class="anim">✂️</span>CLIPSHORT <span class="glow">AI</span></div>
+<div class="logo"><b>C</b><b>L</b><b>I</b><b>P</b><b>S</b><b>H</b><b>O</b><b>R</b><b>T</b><span class="ai">AI</span></div>
 <a class="btn" href="https://clipshort-ai.streamlit.app" target="_blank">Full App ↗</a>
 </header>
 
