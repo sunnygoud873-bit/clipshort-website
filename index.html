@@ -6,10 +6,9 @@
 <title>CLIPSHORT AI</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#000;color:#fff}
-header{height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;background:#000;border-bottom:1px solid #222;position:sticky;top:0;z-index:100}
+body{background:#000;color:#fff;overflow:hidden}
+header{height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;background:#000;border-bottom:1px solid #222;position:relative;z-index:100}
 .logo{font-size:22px;font-weight:900;letter-spacing:1px;display:flex;gap:1px}
-/* FONT ANIMATION - Letters Eguruthayi */
 .logo b{display:inline-block;animation:wave 1.6s ease-in-out infinite;color:#fff}
 .logo b:nth-child(1){animation-delay:0s}
 .logo b:nth-child(2){animation-delay:0.1s}
@@ -20,22 +19,18 @@ header{height:60px;display:flex;justify-content:space-between;align-items:center
 .logo b:nth-child(7){animation-delay:0.6s}
 .logo b:nth-child(8){animation-delay:0.7s}
 .logo b:nth-child(9){animation-delay:0.8s}
-@keyframes wave{
-0%,100%{transform:translateY(0);color:#fff}
-50%{transform:translateY(-6px);color:#ff0050}
-}
-/* AI - Colour Changing Font */
+@keyframes wave{0%,100%{transform:translateY(0);color:#fff}50%{transform:translateY(-6px);color:#ff0050}}
 .ai{margin-left:6px;font-weight:900;background:linear-gradient(90deg,#ff0050,#ffaa00,#00e5ff,#ff0050);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:colorflow 2s linear infinite}
 @keyframes colorflow{0%{background-position:0% 50%}100%{background-position:300% 50%}}
 .btn{background:#ff0050;color:#fff;text-decoration:none;padding:9px 15px;border-radius:20px;font-weight:800;font-size:13px}
-.wrap{position:relative;width:100%;height:calc(100vh - 60px);background:#fff}
+/* VERCEL ONLY HIDE TRICK - Crop */
+.wrap{position:relative;width:100%;height:calc(100vh - 60px);overflow:hidden;background:#fff}
 #loader{position:absolute;top:0;left:0;right:0;bottom:0;background:#fff;color:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;text-align:center;padding:20px}
 #loader b{font-size:18px}
 #loader p{color:#666;font-size:13px;margin-top:8px}
 .spinner{width:40px;height:40px;border:4px solid #eee;border-top:4px solid #ff0050;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:15px}
 @keyframes spin{to{transform:rotate(360deg)}}
-iframe{width:100%;height:100%;border:0;display:block;background:#fff}
-.footer{text-align:center;color:#777;font-size:12px;padding:12px;background:#000}
+iframe{width:100%;height:calc(100% + 90px);margin-top:-45px;margin-bottom:-45px;border:0;display:block;background:#fff}
 </style>
 </head>
 <body>
@@ -53,8 +48,6 @@ iframe{width:100%;height:100%;border:0;display:block;background:#fff}
 </div>
 <iframe src="https://clipshort-ai.streamlit.app/?embed=true" onload="document.getElementById('loader').style.display='none'"></iframe>
 </div>
-
-<div class="footer">© 2026 CLIPSHORT AI - Made in India 🇮🇳</div>
 
 </body>
 </html>
