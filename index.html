@@ -4,22 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>CLIPSHORT AI</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;color:#fff;overflow:hidden;font-family:'Inter',sans-serif}
-/* HEADER - LEFT SIDE ⬅️ */
-header{height:60px;display:flex;justify-content:flex-start;align-items:center;gap:9px;background:#000;border-bottom:1px solid #1a1a1a;position:relative;z-index:100;padding:0 16px}
-.logo-badge{width:32px;height:32px;background:linear-gradient(135deg,#a855f7,#ec4899);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 4px 14px rgba(168,85,247,0.4)}
-.logo-text{font-family:'Plus Jakarta Sans','Inter',sans-serif;font-size:21px;font-weight:800;letter-spacing:-0.6px;color:#fff;line-height:1}
-.logo-text span{background:linear-gradient(90deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
-.logo-sub{font-size:9px;font-weight:700;letter-spacing:2.5px;color:#888;margin-top:2px;text-transform:uppercase}
+/* HEADER - LEFT ⬅️ */
+header{height:60px;display:flex;justify-content:flex-start;align-items:center;gap:9px;background:#000;border-bottom:1px solid #1a1a1a;padding:0 16px;position:relative;z-index:100}
+.logo-badge{width:32px;height:32px;background:linear-gradient(135deg,#a855f7,#ec4899);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-size:21px;font-weight:800;letter-spacing:-0.6px;line-height:1}
+.logo-text span{background:linear-gradient(90deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-sub{font-size:9px;font-weight:700;letter-spacing:2.5px;color:#888;margin-top:2px}
 .logo-col{display:flex;flex-direction:column;align-items:flex-start}
+/* TABS - JUST 2 */
+.tabs{display:flex;gap:10px;background:#000;padding:12px 16px;border-bottom:1px solid #1a1a1a}
+.tab{flex:1;height:42px;border-radius:10px;border:1px solid #222;background:#111;color:#aaa;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.5px;cursor:pointer}
+.tab.active{background:linear-gradient(90deg,#a855f7,#ec4899);color:#fff;border:0;box-shadow:0 4px 14px rgba(168,85,247,0.4)}
+/* PULL */
 #pull{height:0;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;gap:8px;transition:height 0.2s}
-#pull span{font-size:13px;color:#a855f7;font-weight:600;font-family:'Inter',sans-serif}
+#pull span{font-size:13px;color:#a855f7;font-weight:600}
 .pull-spinner{width:18px;height:18px;border:3px solid #222;border-top:3px solid #a855f7;border-radius:50%;animation:spin 0.7s linear infinite;display:none}
 @keyframes spin{to{transform:rotate(360deg)}}
-.wrap{position:relative;width:100%;height:calc(100vh - 60px);overflow:hidden;background:#000}
+.wrap{position:relative;width:100%;height:calc(100vh - 60px - 67px);overflow:hidden;background:#000}
 iframe{width:100%;height:100%;border:0;display:block;background:#000}
 </style>
 </head>
@@ -29,9 +34,15 @@ iframe{width:100%;height:100%;border:0;display:block;background:#000}
 <div class="logo-badge">✂️</div>
 <div class="logo-col">
 <div class="logo-text">ClipShort <span>AI</span></div>
-<div class="logo-sub">Pro Clipper</div>
+<div class="logo-sub">PRO CLIPPER</div>
 </div>
 </header>
+
+<!-- JUST CLIPPER + DOWNLOADER INSTA -->
+<div class="tabs">
+<button class="tab active" id="tabClipper" onclick="showTab('clipper')">✂️ CLIPPER</button>
+<button class="tab" id="tabInsta" onclick="showTab('insta')">📸 DOWNLOADER INSTA</button>
+</div>
 
 <div id="pull"><div class="pull-spinner" id="pullSpin"></div><span id="pullText">↓ Pull to Refresh</span></div>
 
@@ -40,8 +51,22 @@ iframe{width:100%;height:100%;border:0;display:block;background:#000}
 </div>
 
 <script>
-let startY = 0;
 let frame = document.getElementById('appFrame');
+function showTab(type){
+  document.getElementById('tabClipper').classList.remove('active');
+  document.getElementById('tabInsta').classList.remove('active');
+  if(type === 'clipper'){
+    document.getElementById('tabClipper').classList.add('active');
+    frame.src = "https://clipshort-ai.streamlit.app/?embed=true";
+  } else {
+    document.getElementById('tabInsta').classList.add('active');
+    frame.src = "https://clipshort-ai.streamlit.app/?embed=true";
+  }
+  // Streamlit lopala kuda same tab select avvali ante - app.py lo kuda 2 options pettu
+}
+
+// Pull Refresh - Header Meedha Matrame
+let startY = 0;
 let pull = document.getElementById('pull');
 let pullText = document.getElementById('pullText');
 let pullSpin = document.getElementById('pullSpin');
