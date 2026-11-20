@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClipShort AI - #1 AI Video Clipping Tool | ClipShort AI Streamlit</title>
+<meta name="description" content="ClipShort AI Streamlit - Turn any video into viral Shorts in 1 click. Free AI clipping tool. Paste YouTube link or upload video up to 4GB and get free viral clips. Best Opus Clip alternative. Clipper + Instagram Downloader + MP3">
+<meta name="keywords" content="clipshort ai, clipshort ai streamlit, clipshort, ai clipping tool, youtube to shorts, instagram downloader, mp3 downloader">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#0a0a0a;color:white;max-width:1280px;margin:auto;padding:20px}
+h1{font-size:32px} p{color:#aaa;margin:8px 0 20px}
+.tabs{display:flex;gap:10px;margin:20px 0}
+.tabs button{padding:12px 25px;border-radius:25px;border:1px solid #333;background:#1a1a1a;color:white;cursor:pointer;font-size:15px}
+.tabs button.active{background:#7C3AED}
+.card{background:#151515;border:1px solid #222;border-radius:16px;padding:20px;margin-bottom:20px}
+input,select{width:100%;padding:13px;border-radius:10px;border:1px solid #333;background:#222;color:white;margin:8px 0;font-size:15px}
+label{font-size:14px;color:#ccc}
+.btn{width:100%;padding:15px;border:none;border-radius:10px;background:#7C3AED;color:white;font-size:16px;font-weight:bold;cursor:pointer;margin-top:10px}
+.btn2{background:#fff;color:black}
+.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+.badge{background:#1a1a1a;border:1px solid #333;padding:8px 14px;border-radius:20px;font-size:13px;display:inline-block;margin:4px}
+video{width:100%;border-radius:12px}
+</style>
+</head>
+<body>
+
+<h1>🎬 CLIPSHORT AI</h1>
+<p>Clipper + Instagram Downloader + MP3</p>
+<span class="badge">✂️ Clipper</span><span class="badge">📸 Instagram Downloader</span><span class="badge">🎵 MP3 Converter</span><span class="badge">📱 4GB Upload</span><span class="badge">🔥 Highlight AI</span>
+
+<div class="tabs">
+<button class="active" onclick="show('clipper',this)">CLIPPER</button>
+<button onclick="show('downloader',this)">DOWNLOADER</button>
+</div>
+
+<!-- CLIPPER -->
+<div id="clipper">
+<div class="grid">
+<div>
+<div class="card">
+<h3>Clipper - Highlight + Normal</h3><br>
+<label>Choose source</label><br>
+<input type="radio" name="src" style="width:auto"> Google Drive &nbsp; <input type="radio" name="src" style="width:auto" checked> Upload video<br>
+<label>Drive link / Upload video</label>
+<input placeholder="Paste Drive link - https://drive.google.com/file/d/...">
+<input type="file" accept="video/*">
+<label>Background Music (Optional)</label>
+<input type="file" accept="audio/*">
+<h3 style="margin-top:15px">Step 1: Preview</h3>
+<button class="btn btn2" onclick="goApp()">GENERATE PREVIEW - 5 Sec</button>
+<p style="font-size:13px">Preview to see effect - Then Generate Clips</p>
+<h3>Step 2: Generate Clips</h3>
+<button class="btn" onclick="goApp()">GENERATE CLIPS</button>
+<p style="font-size:13px">⚡ Processing in Streamlit App - Free - No Watermark</p>
+</div>
+</div>
+
+<div>
+<div class="card">
+<h3>Editing Settings</h3><br>
+<label>How to clip?</label>
+<select><option>Highlight Moments - Best Parts Only</option><option selected>Normal Clipping - Evenly Spaced Clips</option></select>
+<label>Maximum clips</label><input type="range" min="1" max="30" value="3">
+<label>Clip duration (seconds)</label><input type="range" min="5" max="60" value="30">
+<label>Original audio volume</label><input type="range" min="0" max="2" step="0.1" value="1.5">
+<label>Music volume</label><input type="range" min="0" max="2" step="0.1" value="0.25">
+<label>Effect</label>
+<select><option>None - Original</option><option>Cinematic - Dark + Warm</option><option>Vivid - Color Pop</option><option>Black & White</option><option>Vintage - Old Film</option><option>Warm - Golden</option><option>Cool - Blue</option></select>
+<label>Aspect Ratio</label>
+<select><option>9:16 - Shorts / Reels - 1080x1920</option><option>16:9 - Wide</option><option>1:1 - Post / Feed</option><option>4:5 - Portrait Post</option></select>
+<label>Resolution</label>
+<select><option>480p - Fast / Low Size</option><option selected>720p - HD</option><option>1080p - Full HD</option><option>1440p - 2K</option></select>
+<label>Speed</label>
+<select><option>0.5</option><option>0.75</option><option selected>1.0</option><option>1.25</option><option>1.5</option><option>2.0</option></select>
+<button class="btn" onclick="goApp()">🚀 Open Full App - FREE</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- DOWNLOADER -->
+<div id="downloader" style="display:none">
+<div class="card">
+<h3>Downloader - Instagram Only</h3><br>
+<h3>Instagram Downloader</h3>
+<label>Instagram Link</label>
+<input placeholder="https://instagram.com/reel/...">
+<label>Format - Instagram</label>
+<select><option>Video - MP4</option><option>Audio - MP3</option></select>
+<label>Quality</label>
+<select><option>720p - HD</option><option>480p - Fast</option><option>1080p - Full HD</option></select>
+<button class="btn" onclick="goApp()">DOWNLOAD INSTAGRAM</button>
+<p>Tip: Insta Clean link: https://www.instagram.com/reel/Dfqu4ikT61P/</p>
+</div>
+</div>
+
+<div class="card" style="text-align:center">
+<h2>How ClipShort AI Works?</h2><br>
+<p>1. Open ClipShort AI Streamlit App &nbsp; | &nbsp; 2. Paste Drive Link or Upload Video up to 4GB &nbsp; | &nbsp; 3. Click Get Free Clips &nbsp; | &nbsp; 4. Download Viral Shorts</p>
+<button class="btn" style="max-width:400px" onclick="goApp()">🚀 Open ClipShort AI App - FREE</button><br><br>
+<p>Used by 20M+ creators - Grant Cardone | Scott Galloway | Logan Paul | ClipShort AI is the best free AI clipping tool for vlogs, gaming, sports, interviews.</p>
+</div>
+
+<script>
+function show(id,btn){
+document.getElementById('clipper').style.display=id=='clipper'?'block':'none';
+document.getElementById('downloader').style.display=id=='downloader'?'block':'none';
+document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+}
+function goApp(){ window.open('https://clipshort-ai.streamlit.app/','_blank'); }
+</script>
+</body>
+</html>
