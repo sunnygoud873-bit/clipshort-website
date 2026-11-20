@@ -7,28 +7,30 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#000;color:#fff;overflow:hidden}
-header{height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;background:#000;border-bottom:1px solid #222;position:relative;z-index:100}
-.logo{font-size:22px;font-weight:900;letter-spacing:1px;display:flex;gap:1px}
-.logo b{display:inline-block;animation:wave 1.6s ease-in-out infinite;color:#fff}
-.logo b:nth-child(1){animation-delay:0s}
-.logo b:nth-child(2){animation-delay:0.1s}
-.logo b:nth-child(3){animation-delay:0.2s}
-.logo b:nth-child(4){animation-delay:0.3s}
-.logo b:nth-child(5){animation-delay:0.4s}
-.logo b:nth-child(6){animation-delay:0.5s}
-.logo b:nth-child(7){animation-delay:0.6s}
-.logo b:nth-child(8){animation-delay:0.7s}
-.logo b:nth-child(9){animation-delay:0.8s}
-@keyframes wave{0%,100%{transform:translateY(0);color:#fff}50%{transform:translateY(-6px);color:#ff0050}}
-.ai{margin-left:6px;font-weight:900;background:linear-gradient(90deg,#ff0050,#ffaa00,#00e5ff,#ff0050);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:colorflow 2s linear infinite}
+header{height:64px;display:flex;justify-content:center;align-items:center;gap:10px;padding:0 16px;background:#000;border-bottom:1px solid #222;position:relative;z-index:100}
+/* LOGO IMAGE ANIMATION */
+.logo-img{height:42px;width:auto;animation:float 2.5s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(168,85,247,0.7))}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1.05)}}
+.logo-text{font-size:22px;font-weight:900;letter-spacing:0.5px;display:flex}
+.logo-text b{display:inline-block;animation:wave 1.6s ease-in-out infinite;color:#fff}
+.logo-text b:nth-child(1){animation-delay:0s}
+.logo-text b:nth-child(2){animation-delay:0.1s}
+.logo-text b:nth-child(3){animation-delay:0.2s}
+.logo-text b:nth-child(4){animation-delay:0.3s}
+.logo-text b:nth-child(5){animation-delay:0.4s}
+.logo-text b:nth-child(6){animation-delay:0.5s}
+.logo-text b:nth-child(7){animation-delay:0.6s}
+.logo-text b:nth-child(8){animation-delay:0.7s}
+.logo-text b:nth-child(9){animation-delay:0.8s}
+@keyframes wave{0%,100%{transform:translateY(0);color:#fff}50%{transform:translateY(-4px);color:#a855f7}}
+.ai{margin-left:6px;font-weight:900;background:linear-gradient(90deg,#a855f7,#ec4899,#8b5cf6,#a855f7);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:colorflow 2s linear infinite}
 @keyframes colorflow{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-.btn{background:#ff0050;color:#fff;text-decoration:none;padding:9px 15px;border-radius:20px;font-weight:800;font-size:13px}
-/* VERCEL ONLY HIDE TRICK - Crop */
-.wrap{position:relative;width:100%;height:calc(100vh - 60px);overflow:hidden;background:#fff}
-#loader{position:absolute;top:0;left:0;right:0;bottom:0;background:#fff;color:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;text-align:center;padding:20px}
+.wrap{position:relative;width:100%;height:calc(100vh - 64px);overflow:hidden;background:#fff}
+#loader{position:absolute;top:0;left:0;right:0;bottom:0;background:#000;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;text-align:center;padding:20px}
 #loader b{font-size:18px}
-#loader p{color:#666;font-size:13px;margin-top:8px}
-.spinner{width:40px;height:40px;border:4px solid #eee;border-top:4px solid #ff0050;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:15px}
+#loader p{color:#aaa;font-size:13px;margin-top:8px}
+.loader-img{height:80px;width:auto;margin-bottom:15px;animation:float 2s ease-in-out infinite}
+.spinner{width:40px;height:40px;border:4px solid #222;border-top:4px solid #a855f7;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:15px}
 @keyframes spin{to{transform:rotate(360deg)}}
 iframe{width:100%;height:calc(100% + 90px);margin-top:-45px;margin-bottom:-45px;border:0;display:block;background:#fff}
 </style>
@@ -36,12 +38,13 @@ iframe{width:100%;height:calc(100% + 90px);margin-top:-45px;margin-bottom:-45px;
 <body>
 
 <header>
-<div class="logo"><b>C</b><b>L</b><b>I</b><b>P</b><b>S</b><b>H</b><b>O</b><b>R</b><b>T</b><span class="ai">AI</span></div>
-<a class="btn" href="https://clipshort-ai.streamlit.app" target="_blank">Full App ↗</a>
+<img src="logo.png" class="logo-img" alt="ClipShort AI">
+<div class="logo-text"><b>C</b><b>l</b><b>i</b><b>p</b><b>S</b><b>h</b><b>o</b><b>r</b><b>t</b><span class="ai">AI</span></div>
 </header>
 
 <div class="wrap">
 <div id="loader">
+<img src="logo.png" class="loader-img" alt="ClipShort AI">
 <div class="spinner"></div>
 <b>CLIPSHORT AI Loading...</b>
 <p>30 sec wait chey - App ready avthundi ⏳</p>
