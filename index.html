@@ -2,24 +2,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>CLIPSHORT AI</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+html,body{height:100%;overscroll-behavior-y:contain}
 body{background:#000;color:#fff;overflow:hidden}
+/* HEADER - NO ANIMATION - NO GLITCH */
 header{height:64px;display:flex;justify-content:center;align-items:center;background:#000;border-bottom:1px solid #222;position:relative;z-index:100}
-/* LOGO - NO GLITCH - Smooth Only */
-.logo-img{height:42px;width:auto;display:block;animation:float 2.5s ease-in-out infinite;filter:drop-shadow(0 0 10px rgba(168,85,247,0.6))}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-.wrap{position:relative;width:100%;height:calc(100vh - 64px);overflow:hidden;background:#000}
-#loader{position:absolute;top:0;left:0;right:0;bottom:0;background:#000;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;text-align:center;padding:20px}
-#loader b{font-size:18px;letter-spacing:1px;margin-top:10px}
-#loader p{color:#aaa;font-size:13px;margin-top:8px}
-.loader-img{height:85px;width:auto;animation:float 2s ease-in-out infinite}
-.boot-bar{width:200px;height:6px;background:#222;border-radius:10px;overflow:hidden;margin:16px 0 8px}
-.boot-fill{height:100%;width:0%;background:linear-gradient(90deg,#a855f7,#ec4899,#00e5ff);animation:boot 1.4s ease-out forwards}
-@keyframes boot{0%{width:0%}40%{width:55%}70%{width:82%}100%{width:100%}}
-.boot-text{font-size:11px;color:#a855f7;letter-spacing:2px}
+.logo-img{height:42px;width:auto;display:block}
+/* SWIPE REFRESH INDICATOR */
+#pull{position:absolute;top:64px;left:0;right:0;height:0;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;gap:8px;z-index:90;transition:height 0.2s}
+#pull span{font-size:13px;color:#a855f7;font-weight:700}
+.pull-spinner{width:20px;height:20px;border:3px solid #222;border-top:3px solid #a855f7;border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wrap{position:relative;width:100%;height:calc(100vh - 64px);overflow:hidden;background:#000;touch-action:pan-y}
 iframe{width:100%;height:calc(100% + 90px);margin-top:-45px;margin-bottom:-45px;border:0;display:block;background:#000}
 </style>
 </head>
@@ -29,16 +26,57 @@ iframe{width:100%;height:calc(100% + 90px);margin-top:-45px;margin-bottom:-45px;
 <img src="logo.png" class="logo-img" alt="ClipShort AI">
 </header>
 
-<div class="wrap">
-<div id="loader">
-<img src="logo.png" class="loader-img" alt="ClipShort AI">
-<b>CLIPSHORT AI</b>
-<div class="boot-bar"><div class="boot-fill"></div></div>
-<div class="boot-text">FAST BOOT...</div>
-<p>App Starting...</p>
+<div id="pull"><div class="pull-spinner"></div><span id="pullText">Pull to Refresh...</span></div>
+
+<div class="wrap" id="wrap">
+<iframe id="appFrame" src="https://clipshort-ai.streamlit.app/?embed=true"></iframe>
 </div>
-<iframe src="https://clipshort-ai.streamlit.app/?embed=true" onload="document.getElementById('loader').style.display='none'"></iframe>
-</div>
+
+<script>
+let startY = 0;
+let pulling = false;
+let pullEl = document.getElementById('pull');
+let pullText = document.getElementById('pullText');
+let frame = document.getElementById('appFrame');
+
+document.addEventListener('touchstart', function(e){
+  startY = e.touches[0].clientY;
+  pulling = true;
+}, {passive:true});
+
+document.addEventListener('touchmove', function(e){
+  if(!pulling) return;
+  let y = e.touches[0].clientY;
+  let diff = y - startY;
+  // Top lo unnapudu matrame + Kindhaki laguthunnappudu matrame
+  if(diff > 0 && window.scrollY === 0){
+    let h = Math.min(diff, 80);
+    pullEl.style.height = h + 'px';
+    if(diff > 70){
+      pullText.textContent = 'Release to Refresh...';
+    } else {
+      pullText.textContent = 'Pull to Refresh...';
+    }
+  }
+}, {passive:true});
+
+document.addEventListener('touchend', function(e){
+  if(!pulling) return;
+  pulling = false;
+  let h = parseInt(pullEl.style.height || 0);
+  if(h >= 70){
+    pullText.textContent = 'Refreshing...';
+    pullEl.style.height = '50px';
+    // Iframe Reload
+    frame.src = frame.src;
+    setTimeout(function(){
+      pullEl.style.height = '0px';
+    }, 900);
+  } else {
+    pullEl.style.height = '0px';
+  }
+}, {passive:true});
+</script>
 
 </body>
 </html>
