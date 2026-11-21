@@ -2,17 +2,87 @@
 <html>
 <head>
 <meta name="google-site-verification" content="Mm_Q4iA0-OjMdPX5HoTEM0W8fn2SlYWNq9ECNUJdEno" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
 <title>CLIPO AI</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0A0A0A;color:#fff;overflow:hidden;font-family:'Inter',sans-serif}
-header{height:64px;display:flex;align-items:center;gap:10px;background:#0A0A0A;border-bottom:1px solid #1E1E1E;padding:0 16px}
-.logo-badge{width:34px;height:34px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px}
+html{
+  height:auto!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  -webkit-overflow-scrolling:touch;
+}
+body{
+  background:#0A0A0A;color:#fff;
+  /* FIX: hidden -> auto - Ippudu scroll avtundi */
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  font-family:'Inter',sans-serif;
+  height:auto!important;
+  min-height:100vh;
+  -webkit-overflow-scrolling:touch;
+}
+header{
+  height:64px;
+  display:flex;align-items:center;gap:10px;
+  background:#0A0A0A;border-bottom:1px solid #1E1E1E;padding:0 16px;
+  /* Header paina fix ga untundi, kindaki scroll chesina kanipistundi */
+  position:sticky;top:0;left:0;right:0;z-index:9999;
+}
+.logo-badge{width:34px;height:34px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 .logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;line-height:1;color:#fff}
 .logo-sub{font-size:10px;color:#888;margin-top:3px}
-.wrap{width:100%;height:calc(100vh - 64px);overflow:hidden;background:#0A0A0A}
-iframe{width:100%;height:calc(100% + 145px);border:0;display:block;background:#0A0A0A;margin-top:-145px}
+
+/* ===== UNLIMITED SIZE - FIX ===== */
+.wrap{
+  width:100%;
+  /* MUNDU: height:calc(100vh - 64px); overflow:hidden - Idi lock chesindi */
+  /* IPPUDU: Unlimited height, scroll allowed */
+  height:auto!important;
+  min-height:calc(100vh - 64px);
+  overflow:visible!important;
+  background:#0A0A0A;
+  display:block;
+}
+iframe{
+  width:100%!important;
+  border:0;display:block;background:#0A0A0A;
+  margin-top:-145px;
+  /* FIX: Iframe ki fixed small height kadu, chala pedda height - Unlimited la anipistundi */
+  height:6000px!important;
+  min-height:6000px!important;
+  overflow:visible!important;
+  /* Mobile lo smooth scroll kosam */
+  -webkit-overflow-scrolling:touch;
+}
+
+/* ===== MOBILE - 0 to 600px - Unlimited ===== */
+@media (max-width: 600px){
+  header{height:60px;padding:0 12px}
+  .logo-text{font-size:18px}
+  iframe{
+    height:7000px!important;
+    min-height:7000px!important;
+  }
+}
+
+/* ===== TABLET - 601 to 1024px ===== */
+@media (min-width: 601px) and (max-width: 1024px){
+  iframe{
+    height:6000px!important;
+    min-height:6000px!important;
+  }
+}
+
+/* ===== DESKTOP - 1025px+ ===== */
+@media (min-width: 1025px){
+  .wrap{max-width:100%!important;margin:0 auto}
+  iframe{
+    height:5500px!important;
+    min-height:5500px!important;
+  }
+}
 </style>
 </head>
 <body>
@@ -21,7 +91,10 @@ iframe{width:100%;height:calc(100% + 145px);border:0;display:block;background:#0
 <div><div class="logo-text">Clipo AI</div><div class="logo-sub">Clipper & Downloader Insta</div></div>
 </header>
 <div class="wrap">
-<iframe src="https://clipshort-ai.streamlit.app/?embed=true"></iframe>
+<iframe src="https://clipshort-ai.streamlit.app/?embed=true" scrolling="yes" allow="autoplay; clipboard-write; fullscreen"></iframe>
 </div>
+
+<!-- Optional: Bottom space, download button ki kindha space kosam -->
+<div style="height:60px;background:#0A0A0A"></div>
 </body>
 </html>
